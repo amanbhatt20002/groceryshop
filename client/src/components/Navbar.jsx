@@ -23,14 +23,14 @@ const Navbar = () => {
 {/* Desktop Menu */}
 <div className="hidden sm:flex items-center gap-8">
     <NavLink to ='/'>Home</NavLink>
-    <NavLink to ='/products'>all</NavLink>
+    <NavLink to ='/products'>All Product </NavLink>
     <NavLink to ='/Contact'>contact</NavLink>
 
 
     <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
         <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
 
-       <img src={assets.search_icon} alt="search"  className='w-4' h-4 />
+       <img src={assets.search_icon} alt="search"  className='w-4 h-4' />
 
     </div>
 
@@ -50,9 +50,9 @@ className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition 
     <img src={assets.profile_icon} className='w-10'alt="" />
     <ul className='hidden group-hover:block absolute top-10 right-0 bg-white shadow border border-gray-200 py-2.5 w-30 rounded-md text-sm z-40'>
       <li  onClick={()=>navigate('my-orders')}  
-       className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>my orders</li>
+       className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>My Orders</li>
       <li  onClick={logout}   
-      className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>logout</li>
+      className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>Logout</li>
     </ul>
   </div>
 )}
@@ -70,15 +70,15 @@ className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition 
   
   <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
 <NavLink to ='/' onClick={()=>setOpen(false)}>Home</NavLink>
-<NavLink to ='/products' onClick={()=>setOpen(false)}>all products</NavLink>
+<NavLink to ='/products' onClick={()=>setOpen(false)}>All Products</NavLink>
 
 {user && 
 
-<NavLink to ='/' onClick={()=>setOpen(false)}>my orders</NavLink>
+<NavLink to ='/' onClick={()=>setOpen(false)}>My Orders</NavLink>
 
 }
 
-<NavLink to ='/' onClick={()=>setOpen(false)}> contact</NavLink>
+<NavLink to ='/' onClick={()=>setOpen(false)}> Contact</NavLink>
 
 
 
