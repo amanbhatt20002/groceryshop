@@ -143,6 +143,14 @@ export const categories = [
     image: grain_image,
     bgColor: "#F1E3F9",
   },
+
+  {
+    text: "oil & Spices",
+    path: "Spices",
+    image: grain_image,
+    bgColor: "#F1E3F9",
+  },
+
 ];
 
 export const footerLinks = [

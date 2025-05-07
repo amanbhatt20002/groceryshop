@@ -9,10 +9,10 @@ const AllProduct = () => {
   useEffect(() => {
     if (searchQuery.length > 0) {
       setFilteredProducts(
-        products.filter((product) =>
+        products.filter(product =>
           product.name.toLowerCase().includes(searchQuery.toLowerCase())
         )
-      );
+      )
     } else {
       setFilteredProducts(products);
     }
@@ -26,13 +26,12 @@ const AllProduct = () => {
       </div>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8'>
-        {filteredProducts.filter((product) => product.instock).length === 0 ? (
+        {filteredProducts.filter((product) => product.inStock).length === 0 ? (
           <p>No products found.</p>
         ) : (
-          filteredProducts
-            .filter((product) => product.instock)
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
+          filteredProducts.filter((product) => product.inStock)
+            .map((product,index) => (
+              <ProductCard key={index} product={product} />
             ))
         )}
       </div>
