@@ -53,9 +53,34 @@ export const AppContextProvider = ({ children }) => {
     setProducts(dummyProducts);
   };
 
+  //get cart items count 
+  const getCartItemsCount = () => {
+    let totalCount = 0;
+    for (const item in cartItems) {
+      totalCount += cartItems[item];
+    }
+    return totalCount;
+  };
+
+  //get cart total amount
+  const getCartTotalAmount = () => {
+    let totalAmount = 0;
+    for (const items in cartItems) {
+      const itemInfo = products.find((product) => product.id === items);
+      if (cartItems[items]>0) {
+        totalAmount += itemInfo.offerPrice * cartItems[items];
+      }
+    }
+    return Math.floor(totalAmount*100)/100;
+  };
+
+
   useEffect(() => {
     fetchProducts();
   }, []);
+
+
+
 
   const value = {
     navigate,
@@ -69,7 +94,10 @@ export const AppContextProvider = ({ children }) => {
     removeFromCart,
     cartItems,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
+    getCartTotalAmount,
+    getCartItemsCount
+
   };
 
   return (
