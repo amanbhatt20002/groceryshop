@@ -60,7 +60,7 @@ className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition 
   <div className='relative group' >
     <img src={assets.profile_icon} className='w-10'alt="" />
     <ul className='hidden group-hover:block absolute top-10 right-0 bg-white shadow border border-gray-200 py-2.5 w-30 rounded-md text-sm z-40'>
-      <li  onClick={()=>navigate('my-orders')}  
+      <li  onClick={()=>navigate('/my-orders')}  
        className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>My Orders</li>
       <li  onClick={logout}   
       className='p-1.5 p1-3 hover:bg-primary/10 cursor-pointer'>Logout</li>
@@ -69,11 +69,22 @@ className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition 
 )}
 </div>
 
+{/* Search Bar for Mobile */}
+
+  <div className='flex items-center gap-6 sm:hidden'>
+    
+      <div  onClick={()=>navigate('/cart')} 
+     className="relative cursor-pointer">
+       <img src={assets.nav_cart_icon} alt="cart"  className='w-6 opacity-80'/>
+        <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getCartItemsCount()}</button>
+    </div>
+
 <button onClick={() => setOpen(!open)}
- aria-label="Menu" className="sm:hidden">
+ aria-label="Menu" className="">
     {/* Menu Icon SVG */}
   <img src={assets.menu_icon} alt="menu" />
 </button>
+  </div>
 {/* Mobile Menu */}
 {open && (
   <div className="absolute z-50 top-[60px] left-0 w-full bg-white shadow-md py-4 flex flex-col items-start gap-2 px-5 text-sm md:hidden">
@@ -81,7 +92,7 @@ className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition 
     <NavLink to='/products' onClick={() => setOpen(false)}>All Products</NavLink>
 
     {user && (
-      <NavLink to='/' onClick={() => setOpen(false)}>My Orders</NavLink>
+      <NavLink to='/my-orders' onClick={() => setOpen(false)}>My Orders</NavLink>
     )}
 
     <NavLink to='/' onClick={() => setOpen(false)}>Contact</NavLink>
