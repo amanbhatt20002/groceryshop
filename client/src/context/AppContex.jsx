@@ -19,7 +19,7 @@ export const AppContextProvider = ({ children }) => {
   const [isSeller, setIsSeller] = useState(false);
   const [showUserLogin, setUserLogin] = useState(false);
   const [products, setProducts] = useState([]);
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState({})
 
   const [searchQuery, setSearchQuery] = useState({});    /////yhan pe change kiya hai
 
@@ -69,8 +69,33 @@ const fetchSeller=async()=>{
   }
 }
 
+// Fetch User Auth Status, User Data and Cart Items
+const fetchUser = async () => {
+  try {
+    const { data } = await axios.get('api/user/is-auth');
+    if (data.success) {
+      setUser(data.user);
+      setCartItems(data.user.cartItems);
+    }
+  } catch (error) {
+    setUser(null);
+  }
+};
+
+
+
+//fetch all products
   const fetchProducts = async () => {
-    setProducts(dummyProducts);
+   try {
+    const {data}=await axios.get('/api/product/list')
+    if(data.success){
+      setProducts(data.products)
+    }else{
+      toast.error(data.message)
+    }
+   } catch (error) {
+       toast.error(error.message)
+   }
   };
 
   //get cart items count 
@@ -96,9 +121,31 @@ const fetchSeller=async()=>{
 
 
   useEffect(() => {
-    fetchProducts();
+    fetchUser()
     fetchSeller()
+        fetchProducts();
+
+    
   }, []);
+
+// Update Database Cart Items
+useEffect(() => {
+  const updateCart = async () => {
+    try {
+      const { data } = await axios.post('/api/cart/update', { cartItems });
+      if (!data.success) {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  if (user) {
+    updateCart();
+  }
+}, [cartItems]);
+
 
 
 
@@ -118,7 +165,7 @@ const fetchSeller=async()=>{
     setSearchQuery,
     getCartTotalAmount,
     getCartItemsCount,
-    axios
+    axios,fetchProducts
 
   };
 
