@@ -35,7 +35,7 @@ project-root/
 - React.js
 - Axios for API calls
 - React Router for navigation
-- Context API or Redux (if used)
+- Context API 
 
 ### Backend
 - Node.js
