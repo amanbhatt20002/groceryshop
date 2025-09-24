@@ -22,7 +22,7 @@ project-root/
 - 🔐 User Authentication (JWT)
 - 🌐 RESTful API Integration
 - 💾 MongoDB Database (Mongoose ORM)
-- 📦 State Management using React Context / Redux (optional)
+- 📦 State Management using React Context 
 - 🎨 Responsive UI with modern CSS
 - ✅ Protected Routes
 - 📄 Form Handling and Validation
@@ -49,7 +49,7 @@ project-root/
 ## 🧪 Prerequisites
 
 - Node.js & npm
-- MongoDB installed locally or use MongoDB Atlas
+- MongoDB installed locally 
 
 ---
 
